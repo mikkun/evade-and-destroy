@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=320, user-scalable=no" />
+    <title>EVADE AND DESTROY</title>
+    <link rel="icon" href="./img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/init.js"></script>
+    <script src="./js/util.js"></script>
+    <script src="./js/map-bg01.js"></script>
+    <script src="./js/map-bg02.js"></script>
+    <script src="./js/map-enemies.js"></script>
+    <script src="./js/constr-physical_point.js"></script>
+    <script src="./js/constr-tile.js"></script>
+    <script src="./js/constr-background.js"></script>
+    <script src="./js/constr-enemy.js"></script>
+    <script src="./js/constr-enemy_shot.js"></script>
+    <script src="./js/constr-player.js"></script>
+    <script src="./js/constr-player_item.js"></script>
+    <script src="./js/constr-player_shot.js"></script>
+    <script src="./js/enemy_manager.js"></script>
+    <script src="./js/enemy_shot_manager.js"></script>
+    <script src="./js/player_manager.js"></script>
+    <script src="./js/player_item_manager.js"></script>
+    <script src="./js/player_shot_manager.js"></script>
+    <script src="./js/game.js"></script>
+</head>
+<body>
+    <canvas id="bg01" width="320" height="480" style="z-index: 1;"></canvas>
+    <canvas id="bg02" width="320" height="480" style="z-index: 2;"></canvas>
+    <canvas id="e_base" width="320" height="480" style="z-index: 3;"></canvas>
+    <canvas id="p_shot" width="320" height="480" style="z-index: 4;"></canvas>
+    <canvas id="e_shot" width="320" height="480" style="z-index: 5;"></canvas>
+    <canvas id="e_ship" width="320" height="480" style="z-index: 6;"></canvas>
+    <canvas id="p_item" width="320" height="480" style="z-index: 7;"></canvas>
+    <canvas id="p_ship" width="320" height="480" style="z-index: 8;"></canvas>
+    <canvas id="front" width="320" height="480" style="z-index: 9;"></canvas>
+    <div id="dialog" class="popup-overlay" style="z-index: 10;">
+        <div class="popup-content">
+            <p>Do you want to tweet your score on Twitter?</p>
+            <a id="tweet_btn" class="btn btn-twitter">TWEET</a>
+            <a id="cancel_btn" class="btn">CANCEL</a>
+        </div>
+    </div>
+</body>
+</html>

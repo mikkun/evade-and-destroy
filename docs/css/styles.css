@@ -1,0 +1,99 @@
+/*!
+ * Name    : styles.css
+ * Purpose : Style sheet for the game
+ *
+ * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
+ * Licence : MIT license
+ */
+
+/*csslint adjoining-classes: false,
+          box-model: false,
+          fallback-colors: false,
+          order-alphabetical: false*/
+
+body {
+    background-color: #000;
+    color: #FFF;
+    font: 16px/1.5 sans-serif;
+    margin: 0;
+    padding: 0;
+}
+canvas {
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    position: absolute;
+}
+
+button.btn,
+input.btn {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+}
+.btn {
+    background-color: #999;
+    color: #FFF;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    font: bold 16px/1.2 sans-serif;
+    margin: 8px 0;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+.btn:active,
+.btn:focus {
+    background-color: #666;
+    color: #FFF;
+    outline: 0;
+}
+.btn::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+.btn.btn-twitter {
+    background-color: #69F;
+    color: #FFF;
+}
+.btn.btn-twitter:active,
+.btn.btn-twitter:focus {
+    background-color: #36C;
+    color: #FFF;
+    outline: 0;
+}
+
+.popup-overlay {
+    left: 0;
+    top: 0;
+    width: 320px;
+    height: 480px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    display: none;
+    position: absolute;
+}
+.popup-content {
+    width: 184px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: #36C solid 2px;
+    cursor: default;
+    margin: 128px auto 64px auto;
+    padding: 0 8px;
+    position: relative;
+    text-align: center;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
