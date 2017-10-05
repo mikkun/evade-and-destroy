@@ -13,7 +13,7 @@ Description
 Playable Demo
 -------------
 
-You can play the game directly at <http://mikkun.github.io/evade-and-destroy/>. Enjoy :-)
+You can play the game directly at <https://mikkun.github.io/evade-and-destroy/>. Enjoy :-)
 
 Browser Support
 ---------------
