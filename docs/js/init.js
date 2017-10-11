@@ -76,7 +76,10 @@ window.onload = function () {
 
     var i = 0,
         max_layers = EAD.layers.length,
-        frame = 0,
+        prev_time = Date.now(),
+        curr_time = 0,
+        elapsed_time = 0,
+        interval = 1000 / EAD.FPS,
         step = {};
 
     while (i < max_layers) {
@@ -97,16 +100,22 @@ window.onload = function () {
             window.webkitRequestAnimationFrame ||
             window.msRequestAnimationFrame;
 
-    EAD.init();
-    EAD.setup();
     step = function () {
-        frame += 1;
-        if (frame % Math.floor(60 / EAD.FPS) === 0) {
+        window.requestAnimationFrame(step);
+
+        curr_time = Date.now();
+        elapsed_time = curr_time - prev_time;
+
+        if (elapsed_time > interval) {
+            prev_time = curr_time - (elapsed_time % interval);
+
             EAD.loop();
         }
-        window.requestAnimationFrame(step);
     };
-    window.requestAnimationFrame(step);
+
+    EAD.init();
+    EAD.setup();
+    window.setTimeout(step, 500);
 };
 
 EAD.init = function () {
