@@ -26,10 +26,10 @@ Browser Support
     * Internet Explorer 10: Fast
     * Vivaldi 1.12: Fast
 * Mobile
-    * Android 4.1: Moderate
-    * Chrome for Android 26: Slow
+    * Android 4.1: Very fast
+    * Chrome for Android 26: Fast
     * Chrome for Android 59: Extremely slow
-    * Firefox Mobile 55: Slow
+    * Firefox Mobile 56: Slow
 
 How to Play
 -----------
