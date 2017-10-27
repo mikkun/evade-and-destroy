@@ -201,7 +201,13 @@ EAD.loop = function () {
                 ) {
                     EAD.enemies[i].damage = EAD.player.power;
                     EAD.enemies[i].state = EAD.enemies[i].STATE.DAMAGED;
-                    if (EAD.player.energy_green === 0) {
+                    if (
+                        (
+                            EAD.player.state === EAD.player.STATE.ACTIVE ||
+                            EAD.player.state === EAD.player.STATE.ATTACK
+                        ) &&
+                        EAD.player.energy_green === 0
+                    ) {
                         EAD.player.state = EAD.player.STATE.DAMAGED;
                     }
                 }
@@ -236,7 +242,13 @@ EAD.loop = function () {
             if (EAD.util.hasCollision(EAD.enemy_shots[i], EAD.player)) {
                 EAD.enemy_shots[i].state
                         = EAD.enemy_shots[i].STATE.GARBAGE;
-                if (EAD.player.energy_green === 0) {
+                if (
+                    (
+                        EAD.player.state === EAD.player.STATE.ACTIVE ||
+                        EAD.player.state === EAD.player.STATE.ATTACK
+                    ) &&
+                    EAD.player.energy_green === 0
+                ) {
                     EAD.player.state = EAD.player.STATE.DAMAGED;
                 }
             }
