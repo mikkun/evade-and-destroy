@@ -172,7 +172,7 @@ EAD.loop = function () {
                 EAD.enemies[i].state === EAD.enemies[i].STATE.ATTACK
             ) {
                 if (EAD.player.energy_blue !== 0) {
-                    EAD.enemies[i].damage = 256;
+                    EAD.enemies[i].damage = EAD.PlayerItem.ENERGY_BLUE;
                     EAD.enemies[i].state = EAD.enemies[i].STATE.DAMAGED;
                 }
             }
