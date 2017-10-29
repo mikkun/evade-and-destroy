@@ -99,6 +99,7 @@ EAD.loop = function () {
         EAD.bg01.setup();
         EAD.bg02.setup();
         EAD.enemy_manager.setup();
+        EAD.player_manager.update();
         EAD.game.state = EAD.game.STATE.TITLE;
         EAD.ctx.front.fillText("  === LOADING DATA ===", EAD.WIDTH / 2, 12);
         if (EAD.game.storage_error) {
