@@ -78,7 +78,8 @@ EAD.loop = function () {
         high_score = ("        " + EAD.high_score).slice(-9),
         score = ("        " + EAD.score).slice(-9),
         energy_red = ("  " + EAD.player.energy_red).slice(-3),
-        energy_green = ("  " + EAD.player.energy_green).slice(-3);
+        energy_green = ("  " + EAD.player.energy_green).slice(-3),
+        lives = (" " + EAD.player.lives).slice(-2);
 
     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
 
@@ -300,6 +301,11 @@ EAD.loop = function () {
             "   INVINCIBLE      " + energy_green,
             EAD.WIDTH / 2,
             24
+        );
+        EAD.ctx.front.fillText(
+            "LIVES " + lives,
+            2,
+            EAD.HEIGHT - EAD.BASE_PX - 2
         );
         break;
 
