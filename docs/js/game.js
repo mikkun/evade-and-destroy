@@ -289,6 +289,12 @@ EAD.loop = function () {
         EAD.high_score = EAD.score < EAD.high_score
             ? EAD.high_score
             : EAD.score;
+        if (EAD.score >= EAD.Player.BONUS_EVERY * EAD.player.bonus_count) {
+            EAD.player.lives = EAD.player.lives < EAD.Player.MAX_LIVES
+                ? EAD.player.lives + 1
+                : EAD.Player.MAX_LIVES;
+            EAD.player.bonus_count += 1;
+        }
         if (EAD.player.state === EAD.player.STATE.GARBAGE) {
             EAD.game.state = EAD.game.STATE.SAVING;
         }

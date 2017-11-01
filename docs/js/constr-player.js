@@ -22,6 +22,7 @@ EAD.Player = function () {
     this.energy_green = 0;
     this.energy_blue = 0;
     this.lives = 0;
+    this.bonus_count = 0;
     this.power = 256;
     this.sprite_x = 1;
     this.sprite_y = 2;
@@ -30,6 +31,8 @@ EAD.Player = function () {
 
 EAD.Player.INITIAL_ENERGY_GREEN = 200;
 EAD.Player.INITIAL_LIVES = 3;
+EAD.Player.MAX_LIVES = 99;
+EAD.Player.BONUS_EVERY = 100000;
 EAD.Player.THRUST = 12;
 
 EAD.Player.prototype.COLLISION_RADIUS = 4;
@@ -85,6 +88,7 @@ EAD.Player.prototype.update = function () {
         this.energy_green = EAD.Player.INITIAL_ENERGY_GREEN;
         this.energy_blue = 0;
         this.lives = EAD.Player.INITIAL_LIVES;
+        this.bonus_count = 1;
         this.sprite_x = 1;
         this.sprite_y = 2;
         this.state = this.STATE.INACTIVE;
