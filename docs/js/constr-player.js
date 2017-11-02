@@ -136,6 +136,10 @@ EAD.Player.prototype.update = function () {
     case this.STATE.DESTROYED:
         this.lives -= 1;
         if (this.lives > 0) {
+            EAD.difficulty -= Math.floor(EAD.difficulty * 0.05);
+            EAD.difficulty = EAD.difficulty < 0
+                ? 0
+                : EAD.difficulty;
             this.x = EAD.WIDTH / 2;
             this.y = EAD.HEIGHT - EAD.BASE_PX * 2;
             this.energy_red = 0;
