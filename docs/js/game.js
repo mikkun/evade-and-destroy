@@ -78,7 +78,8 @@ EAD.loop = function () {
         high_score = ("        " + EAD.high_score).slice(-9),
         score = ("        " + EAD.score).slice(-9),
         energy_red = ("  " + EAD.player.energy_red).slice(-3),
-        energy_green = ("  " + EAD.player.energy_green).slice(-3);
+        energy_green = ("  " + EAD.player.energy_green).slice(-3),
+        lives = (" " + EAD.player.lives).slice(-2);
 
     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
 
@@ -99,6 +100,7 @@ EAD.loop = function () {
         EAD.bg01.setup();
         EAD.bg02.setup();
         EAD.enemy_manager.setup();
+        EAD.player_manager.update();
         EAD.game.state = EAD.game.STATE.TITLE;
         EAD.ctx.front.fillText("  === LOADING DATA ===", EAD.WIDTH / 2, 12);
         if (EAD.game.storage_error) {
@@ -172,7 +174,7 @@ EAD.loop = function () {
                 EAD.enemies[i].state === EAD.enemies[i].STATE.ATTACK
             ) {
                 if (EAD.player.energy_blue !== 0) {
-                    EAD.enemies[i].damage = 256;
+                    EAD.enemies[i].damage = EAD.PlayerItem.ENERGY_BLUE;
                     EAD.enemies[i].state = EAD.enemies[i].STATE.DAMAGED;
                 }
             }
@@ -201,7 +203,13 @@ EAD.loop = function () {
                 ) {
                     EAD.enemies[i].damage = EAD.player.power;
                     EAD.enemies[i].state = EAD.enemies[i].STATE.DAMAGED;
-                    if (EAD.player.energy_green === 0) {
+                    if (
+                        (
+                            EAD.player.state === EAD.player.STATE.ACTIVE ||
+                            EAD.player.state === EAD.player.STATE.ATTACK
+                        ) &&
+                        EAD.player.energy_green === 0
+                    ) {
                         EAD.player.state = EAD.player.STATE.DAMAGED;
                     }
                 }
@@ -236,7 +244,13 @@ EAD.loop = function () {
             if (EAD.util.hasCollision(EAD.enemy_shots[i], EAD.player)) {
                 EAD.enemy_shots[i].state
                         = EAD.enemy_shots[i].STATE.GARBAGE;
-                if (EAD.player.energy_green === 0) {
+                if (
+                    (
+                        EAD.player.state === EAD.player.STATE.ACTIVE ||
+                        EAD.player.state === EAD.player.STATE.ATTACK
+                    ) &&
+                    EAD.player.energy_green === 0
+                ) {
                     EAD.player.state = EAD.player.STATE.DAMAGED;
                 }
             }
@@ -275,6 +289,12 @@ EAD.loop = function () {
         EAD.high_score = EAD.score < EAD.high_score
             ? EAD.high_score
             : EAD.score;
+        if (EAD.score >= EAD.Player.BONUS_EVERY * EAD.player.bonus_count) {
+            EAD.player.lives = EAD.player.lives < EAD.Player.MAX_LIVES
+                ? EAD.player.lives + 1
+                : EAD.Player.MAX_LIVES;
+            EAD.player.bonus_count += 1;
+        }
         if (EAD.player.state === EAD.player.STATE.GARBAGE) {
             EAD.game.state = EAD.game.STATE.SAVING;
         }
@@ -287,6 +307,11 @@ EAD.loop = function () {
             "   INVINCIBLE      " + energy_green,
             EAD.WIDTH / 2,
             24
+        );
+        EAD.ctx.front.fillText(
+            "LIVES " + lives,
+            2,
+            EAD.HEIGHT - EAD.BASE_PX - 2
         );
         break;
 

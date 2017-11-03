@@ -22,9 +22,9 @@ EAD.PlayerItem = function () {
     this.state = this.STATE.GARBAGE;
 };
 
-EAD.PlayerItem.ENERGY_RED = 500;
-EAD.PlayerItem.ENERGY_GREEN = 300;
-EAD.PlayerItem.ENERGY_BLUE = 1;
+EAD.PlayerItem.ENERGY_RED = 600;
+EAD.PlayerItem.ENERGY_GREEN = 400;
+EAD.PlayerItem.ENERGY_BLUE = 256;
 
 EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;
 EAD.PlayerItem.prototype.NAME = {

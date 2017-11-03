@@ -21,7 +21,7 @@ Browser Support
 **EVADE AND DESTROY** has been tested in the following browsers:
 
 * Desktop
-    * Chromium 57: Fast
+    * Chromium 61: Fast
     * Firefox 52: Very fast
     * Internet Explorer 10: Fast
     * Vivaldi 1.12: Fast
@@ -45,9 +45,13 @@ How to Play
 
 ### Power-Up Items ###
 
-* ![Red power-up capsule](./md-images/item-red.png) - __Plasma Cannon__ - Increases fire power. Max ammo is 500 shots.
+* ![Red power-up capsule](./md-images/item-red.png) - __Plasma Cannon__ - Increases fire power. Max ammo is 600 shots.
 * ![Green power-up capsule](./md-images/item-green.png) - __Invincible__ - Temporary invincibility.
 * ![Blue power-up capsule](./md-images/item-blue.png) - __Flash Bomb__ - Destroys all enemies on the screen.
+
+### Extra Lives ###
+
+You start with three lives and get an extra life every 100,000 points.
 
 Customizing the Map
 -------------------
