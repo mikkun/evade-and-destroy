@@ -500,9 +500,9 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             if (
                 this.y > EAD.BASE_PX * 2 &&
-                EAD.util.abs(player_x - this.x) < EAD.BASE_PX / 2
+                EAD.util.abs(player_x - this.x) < EAD.BASE_PX
             ) {
-                this.vy = 20;
+                this.vy = 16;
                 this.sprite_air_x = 7;
             }
             this.x += this.vx;
@@ -515,7 +515,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
             velocity = EAD.util.calcVelocity(
                 {x: this.x, y: this.y},
                 {x: player_x, y: player_y},
-                20
+                16
             );
             this.vx = velocity.vx;
             this.vy = velocity.vy;
