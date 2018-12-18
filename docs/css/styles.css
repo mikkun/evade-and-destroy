@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /*!
  * Name    : styles.css
  * Purpose : Style sheet for the game
@@ -11,34 +13,42 @@
           fallback-colors: false,
           order-alphabetical: false*/
 
+/* The game screen */
 body {
     background-color: #000;
-    color: #FFF;
+    color: #fff;
     font: 16px/1.5 sans-serif;
     margin: 0;
     padding: 0;
 }
+
 canvas {
-    left: 0;
     top: 0;
+    right: 0;
+    left: 0;
+    width: 320px;
+    height: 480px;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
+    margin: auto;
     position: absolute;
 }
 
+/* Buttons */
 button.btn,
 input.btn {
+    width: 100%;
     -moz-appearance: none;
     -webkit-appearance: none;
-    width: 100%;
 }
+
 .btn {
     background-color: #999;
-    color: #FFF;
     -webkit-border-radius: 2px;
     border-radius: 2px;
     border: 0;
+    color: #fff;
     cursor: pointer;
     display: block;
     font: bold 16px/1.2 sans-serif;
@@ -49,45 +59,54 @@ input.btn {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
+    user-select: none;
 }
-.btn:active,
-.btn:focus {
-    background-color: #666;
-    color: #FFF;
-    outline: 0;
-}
+
 .btn::-moz-focus-inner {
     border: 0;
     padding: 0;
 }
-.btn.btn-twitter {
-    background-color: #69F;
-    color: #FFF;
-}
-.btn.btn-twitter:active,
-.btn.btn-twitter:focus {
-    background-color: #36C;
-    color: #FFF;
+
+.btn:active,
+.btn:focus {
+    background-color: #666;
+    color: #fff;
     outline: 0;
 }
 
+.btn.btn-twitter {
+    background-color: #69f;
+    color: #fff;
+}
+
+.btn.btn-twitter:active,
+.btn.btn-twitter:focus {
+    background-color: #36c;
+    color: #fff;
+    outline: 0;
+}
+
+/* Popup */
 .popup-overlay {
-    left: 0;
     top: 0;
+    right: 0;
+    left: 0;
     width: 320px;
     height: 480px;
     background-color: rgba(255, 255, 255, 0.2);
     color: inherit;
     display: none;
+    margin: auto;
     position: absolute;
 }
+
 .popup-content {
     width: 184px;
     background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    border: #36C solid 2px;
+    border: #36c solid 2px;
+    color: #000;
     cursor: default;
     margin: 128px auto 64px auto;
     padding: 0 8px;
@@ -96,4 +115,5 @@ input.btn {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
+    user-select: none;
 }
