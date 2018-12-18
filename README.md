@@ -13,7 +13,9 @@ Description
 Playable Demo
 -------------
 
-You can play the game directly at <https://mikkun.github.io/evade-and-destroy/>. Enjoy :-)
+You can play the game directly at <https://mikkun.github.io/evade-and-destroy/>.
+
+If you want to play the game offline, you can install the game as a Progressive Web App.
 
 Browser Support
 ---------------
@@ -21,15 +23,14 @@ Browser Support
 **EVADE AND DESTROY** has been tested in the following browsers:
 
 * Desktop
-    * Chromium 61: Fast
-    * Firefox 52: Very fast
-    * Internet Explorer 10: Fast
-    * Vivaldi 1.12: Fast
+    * Chromium 71.0.3578.80: Very fast
+    * Firefox 60.4.0: Very fast
+    * Firefox Beta 65.0beta: Very fast
+    * Internet Explorer 11: Very fast
+    * Vivaldi 2.2.1388.34: Very fast
 * Mobile
-    * Android 4.1: Very fast
-    * Chrome for Android 26: Fast
-    * Chrome for Android 59: Extremely slow
-    * Firefox Mobile 56: Slow
+    * Chrome for Android 71.0.3578.98: Very fast
+    * Firefox for Android 63.0.2: Very fast
 
 How to Play
 -----------
@@ -78,4 +79,4 @@ Author
 License
 -------
 
-[MIT](./LICENSE)
+[MIT License](./LICENSE)
