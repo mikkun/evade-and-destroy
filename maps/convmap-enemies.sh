@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/area-{0..7}.tmx" to "map-enemies.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT license
+# Licence : MIT License
 
 # Usage : ./convmap-enemies.sh
 
@@ -51,7 +51,7 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of enemies
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
