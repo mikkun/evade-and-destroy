@@ -7,7 +7,7 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.bg01_map = [
     2, 0, 0, 0, 1, 3, 4, 0, 1, 0,
