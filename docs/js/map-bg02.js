@@ -3,11 +3,11 @@
  * Purpose : Map of the enemy space station (bg02)
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.bg02_maps = [];
 

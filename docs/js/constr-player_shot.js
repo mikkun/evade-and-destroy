@@ -3,11 +3,11 @@
  * Purpose : Constructor for PlayerShot objects
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.PlayerShot = function () {
     "use strict";

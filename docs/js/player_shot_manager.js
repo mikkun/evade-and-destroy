@@ -3,11 +3,11 @@
  * Purpose : Managing the instances of PlayerShot
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.player_shot_manager = {};
 

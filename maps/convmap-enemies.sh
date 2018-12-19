@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/area-{0..7}.tmx" to "map-enemies.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT license
+# Licence : MIT License
 
 # Usage : ./convmap-enemies.sh
 
@@ -23,8 +23,9 @@ if [ "$(uname)" != 'Linux' ] ; then
     alias tr='gtr'
 fi
 
-PATH='/bin:/usr/bin'
-export PATH
+IFS="$(printf ' \t\n_')" ; IFS="${IFS%_}"
+PATH='/usr/bin:/bin'
+export IFS PATH
 
 ERROR_CHECK() {
     [ "$(echo "${PIPESTATUS[@]}" | tr -d ' 0')" = '' ] && return
@@ -51,11 +52,11 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of enemies
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.enemies_maps = [];
 

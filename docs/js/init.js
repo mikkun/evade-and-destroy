@@ -3,11 +3,11 @@
  * Purpose : Initializing the game environment
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 var EAD = {};
 
@@ -130,8 +130,8 @@ EAD.init = function () {
 
             EAD.prev_x = EAD.curr_x;
             EAD.prev_y = EAD.curr_y;
-            EAD.curr_x = evt.changedTouches[0].pageX;
-            EAD.curr_y = evt.changedTouches[0].pageY;
+            EAD.curr_x = evt.changedTouches[0].pageX - layer.offsetLeft;
+            EAD.curr_y = evt.changedTouches[0].pageY - layer.offsetTop;
             EAD.tapped = true;
             EAD.touched = true;
         }, false);
@@ -141,8 +141,8 @@ EAD.init = function () {
 
             EAD.prev_x = EAD.curr_x;
             EAD.prev_y = EAD.curr_y;
-            EAD.curr_x = evt.changedTouches[0].pageX;
-            EAD.curr_y = evt.changedTouches[0].pageY;
+            EAD.curr_x = evt.changedTouches[0].pageX - layer.offsetLeft;
+            EAD.curr_y = evt.changedTouches[0].pageY - layer.offsetTop;
             EAD.tapped = false;
             EAD.touched = true;
         }, false);
@@ -152,8 +152,8 @@ EAD.init = function () {
 
             EAD.prev_x = EAD.curr_x;
             EAD.prev_y = EAD.curr_y;
-            EAD.curr_x = evt.changedTouches[0].pageX;
-            EAD.curr_y = evt.changedTouches[0].pageY;
+            EAD.curr_x = evt.changedTouches[0].pageX - layer.offsetLeft;
+            EAD.curr_y = evt.changedTouches[0].pageY - layer.offsetTop;
             EAD.tapped = false;
             EAD.touched = false;
         }, false);

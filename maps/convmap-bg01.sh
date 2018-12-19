@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/starfield.tmx" to "map-bg01.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT license
+# Licence : MIT License
 
 # Usage : ./convmap-bg01.sh
 
@@ -23,8 +23,9 @@ if [ "$(uname)" != 'Linux' ] ; then
     alias tr='gtr'
 fi
 
-PATH='/bin:/usr/bin'
-export PATH
+IFS="$(printf ' \t\n_')" ; IFS="${IFS%_}"
+PATH='/usr/bin:/bin'
+export IFS PATH
 
 ERROR_CHECK() {
     [ "$(echo "${PIPESTATUS[@]}" | tr -d ' 0')" = '' ] && return
@@ -49,11 +50,11 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of starfield (bg01)
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT license
+ * Licence : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, window*/
+/*global EAD, Image, caches, fetch, self, window*/
 
 EAD.bg01_map = [
 END_CODE

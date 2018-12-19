@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=320, user-scalable=no" />
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="EVADE AND DESTROY">
+    <meta name="application-name" content="EVADE AND DESTROY">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EVADE AND DESTROY</title>
-    <link rel="icon" href="./img/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="apple-touch-icon" href="./img/icon-48x48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="./img/icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="./img/icon-192x192.png" sizes="192x192" type="image/png">
+    <link rel="icon" href="./img/icon-48x48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="./img/icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="icon" href="./img/icon-192x192.png" sizes="192x192" type="image/png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/init.js"></script>
     <script src="./js/util.js"></script>
     <script src="./js/map-bg01.js"></script>
@@ -25,6 +38,19 @@
     <script src="./js/player_item_manager.js"></script>
     <script src="./js/player_shot_manager.js"></script>
     <script src="./js/game.js"></script>
+    <script>
+    /*jslint bitwise, browser, multivar, this*/
+    /*global EAD, Image, caches, fetch, self, window*/
+    if (navigator.serviceWorker) {
+        window.addEventListener("load", function () {
+            "use strict";
+            navigator.serviceWorker.register(
+                "./service_worker.js",
+                {scope: "./"}
+            );
+        });
+    }
+    </script>
 </head>
 <body>
     <canvas id="bg01" width="320" height="480" style="z-index: 1;"></canvas>
@@ -39,8 +65,8 @@
     <div id="dialog" class="popup-overlay" style="z-index: 10;">
         <div class="popup-content">
             <p>Do you want to tweet your score on Twitter?</p>
-            <a id="tweet_btn" class="btn btn-twitter">TWEET</a>
-            <a id="cancel_btn" class="btn">CANCEL</a>
+            <a id="tweet_btn" class="btn btn-twitter" tabindex="0">TWEET</a>
+            <a id="cancel_btn" class="btn" tabindex="0">CANCEL</a>
         </div>
     </div>
 </body>
