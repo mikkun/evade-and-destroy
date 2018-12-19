@@ -1,0 +1,29 @@
+{
+    "lang": "en",
+    "name": "EVADE AND DESTROY",
+    "short_name": "E.A.D.",
+    "description": "HTML5 space shooter game using pure JavaScript",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "sizes": "48x48",
+            "src": "./img/icon-48x48.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "96x96",
+            "src": "./img/icon-96x96.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "192x192",
+            "src": "./img/icon-192x192.png",
+            "type": "image/png"
+        }
+    ],
+    "scope": "./",
+    "start_url": "./"
+}
