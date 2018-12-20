@@ -12,13 +12,10 @@
 var CACHE_NAME = "EAD-cache-v1",
     CACHED_URLS = [
         "./",
-        "./css/",
         "./css/styles.css",
-        "./img/",
         "./img/sprites.png",
         "./img/tileset.png",
         "./index.html",
-        "./js/",
         "./js/constr-background.js",
         "./js/constr-enemy.js",
         "./js/constr-enemy_shot.js",
