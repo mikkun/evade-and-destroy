@@ -5,7 +5,7 @@
     "description": "HTML5 space shooter game using pure JavaScript",
     "background_color": "#000000",
     "theme_color": "#000000",
-    "display": "fullscreen",
+    "display": "standalone",
     "orientation": "portrait",
     "icons": [
         {
