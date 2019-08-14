@@ -56,7 +56,7 @@ cat << END_CODE > "$output_file"
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
 EAD.bg02_maps = [];
 

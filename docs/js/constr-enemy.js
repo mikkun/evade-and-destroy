@@ -7,7 +7,7 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
 EAD.Enemy = function () {
     "use strict";
@@ -165,6 +165,9 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
                 : EAD.difficulty < 0
                     ? 0
                     : EAD.difficulty;
+            EAD.hit = this.on_ground
+                ? EAD.hit + 2
+                : EAD.hit + 1;
             EAD.score += this.pts;
             EAD.score = EAD.score > EAD.MAX_SCORE
                 ? EAD.MAX_SCORE
