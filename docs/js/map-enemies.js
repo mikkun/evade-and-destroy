@@ -7,7 +7,7 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
 EAD.enemies_maps = [];
 
@@ -285,7 +285,7 @@ EAD.enemies_maps[4] = [
     10, 80, 90, 10, 72, 60, 72, 10, 90, 10,
     10, 10, 80, 10, 10, 10, 10, 80, 10, 10,
     10, 10, 72, 50, 72, 80, 10, 90, 10, 10,
-    80, 90, 10, 10, 10, 72, 40, 72, 10, 10,
+    80, 90, 10, 10, 10, 72, 40, 72, 10, 25,
     90, 10, 71, 60, 71, 10, 90, 10, 80, 10,
     10, 10, 10, 80, 10, 10, 80, 10, 10, 10,
     10, 80, 90, 10, 90, 10, 10, 10, 80, 10,

@@ -7,7 +7,7 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
 EAD.game = {};
 
@@ -100,6 +100,7 @@ EAD.loop = function () {
         EAD.bg01.setup();
         EAD.bg02.setup();
         EAD.enemy_manager.setup();
+        EAD.boss_manager.setup();
         EAD.player_manager.update();
         EAD.game.state = EAD.game.STATE.TITLE;
         EAD.ctx.front.fillText("  === LOADING DATA ===", EAD.WIDTH / 2, 12);
@@ -121,11 +122,13 @@ EAD.loop = function () {
     case EAD.game.STATE.TITLE:
         EAD.enemy_manager.hideEnemyShips();
         EAD.enemy_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
+        EAD.boss_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         if (EAD.tapped) {
             EAD.game.state = EAD.game.STATE.START;
         }
         EAD.ctx.front.fillText("  ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
         EAD.ctx.front.fillText("  --- TAP TO START ---", EAD.WIDTH / 2, 24);
+        EAD.ctx.front.fillText(EAD.VERSION, 2, EAD.HEIGHT - EAD.BASE_PX - 3);
         EAD.ctx.front.drawImage(
             EAD.sprites,
             EAD.BASE_PX * 6,
@@ -144,6 +147,7 @@ EAD.loop = function () {
         EAD.ctx.front.fillRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
         EAD.ctx.front.fillStyle = EAD.FONT_COLOR;
         EAD.difficulty = 0;
+        EAD.hit = 0;
         EAD.score = 0;
         EAD.bg01.tile_id = 0;
         EAD.bg01.setup();
@@ -151,6 +155,7 @@ EAD.loop = function () {
         EAD.bg02.setup();
         EAD.enemy_id = 0;
         EAD.enemy_manager.setup();
+        EAD.boss_manager.setup();
         EAD.player.state = EAD.player.STATE.STANDBY;
         EAD.game.state = EAD.game.STATE.PLAYING;
         EAD.ctx.front.fillText("  == STARTING  GAME ==", EAD.WIDTH / 2, 12);
@@ -167,6 +172,9 @@ EAD.loop = function () {
             }
         }
         EAD.player_shot_manager.update(EAD.player.x, EAD.player.y);
+        if (EAD.boss.state !== EAD.boss.STATE.GARBAGE) {
+            EAD.enemy_manager.hideEnemyShips();
+        }
         EAD.enemy_manager.update(EAD.player.x, EAD.player.y);
         while (i < EAD.enemy_manager.MAX_ENEMIES) {
             if (
@@ -237,6 +245,52 @@ EAD.loop = function () {
                 );
             }
             i += 1;
+        }
+        EAD.boss_manager.update(EAD.player.x, EAD.player.y);
+        if (
+            EAD.hit > EAD.MAX_HIT &&
+            EAD.boss.state === EAD.boss.STATE.GARBAGE
+        ) {
+            EAD.boss.state = EAD.boss.STATE.INIT;
+        }
+        if (
+            EAD.boss.state === EAD.boss.STATE.ACTIVE ||
+            EAD.boss.state === EAD.boss.STATE.ATTACK
+        ) {
+            EAD.hit = 0;
+            if (EAD.player.energy_blue !== 0) {
+                EAD.boss.damage = EAD.PlayerItem.ENERGY_BLUE;
+                EAD.boss.state = EAD.boss.STATE.DAMAGED;
+            }
+        }
+        if (
+            EAD.boss.state === EAD.boss.STATE.ACTIVE ||
+            EAD.boss.state === EAD.boss.STATE.ATTACK
+        ) {
+            i = 0;
+            while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {
+                if (EAD.util.hasCollision(EAD.boss, EAD.player_shots[i])) {
+                    EAD.boss.damage = EAD.player_shots[i].power;
+                    EAD.boss.state = EAD.boss.STATE.DAMAGED;
+                    EAD.player_shots[i].state =
+                            EAD.player_shots[i].STATE.GARBAGE;
+                }
+                i += 1;
+            }
+        }
+        if (
+            EAD.boss.state === EAD.boss.STATE.ATTACK ||
+            EAD.boss.state === EAD.boss.STATE.DESTROYED ||
+            (
+                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.boss.state === EAD.boss.STATE.DAMAGED
+            ) ||
+            (
+                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.boss.state === EAD.boss.STATE.EXPLODING
+            )
+        ) {
+            EAD.enemy_shot_manager.fire(EAD.boss.x, EAD.boss.y, false);
         }
         EAD.enemy_shot_manager.update(EAD.player.x, EAD.player.y);
         i = 0;
@@ -337,6 +391,7 @@ EAD.loop = function () {
             );
         }
         EAD.enemy_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
+        EAD.boss_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         EAD.enemy_shot_manager.setup();
         EAD.enemy_shot_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         EAD.player_manager.setup();
@@ -363,6 +418,7 @@ EAD.loop = function () {
         button_y = 0;
         EAD.enemy_manager.hideEnemyShips();
         EAD.enemy_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
+        EAD.boss_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         EAD.game.state = EAD.game.STATE.GAMEOVER;
         EAD.ctx.front.fillText("  ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
         EAD.ctx.front.fillText("  -- BUTTON  LOCKED --", EAD.WIDTH / 2, 24);
@@ -375,6 +431,7 @@ EAD.loop = function () {
     EAD.bg02.scroll();
 
     EAD.enemy_manager.draw();
+    EAD.boss_manager.draw();
     EAD.enemy_shot_manager.draw();
     EAD.player_manager.draw();
     EAD.player_item_manager.draw();

@@ -7,16 +7,19 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
-var CACHE_NAME = "EAD-cache-v1",
+var CACHE_NAME = "EAD-cache-v3.0.0",
     CACHED_URLS = [
         "./",
         "./css/styles.css",
+        "./img/mothership.png",
         "./img/sprites.png",
         "./img/tileset.png",
         "./index.html",
+        "./js/boss_manager.js",
         "./js/constr-background.js",
+        "./js/constr-boss.js",
         "./js/constr-enemy.js",
         "./js/constr-enemy_shot.js",
         "./js/constr-physical_point.js",
@@ -47,12 +50,33 @@ self.addEventListener("install", function (evt) {
     );
 });
 
+self.addEventListener("activate", function (evt) {
+    "use strict";
+
+    var curr_caches = [CACHE_NAME];
+
+    evt.waitUntil(
+        caches.keys().then(function (cache_names) {
+            return Promise.all(cache_names.map(function (cache_name) {
+                if (curr_caches.indexOf(cache_name) === -1) {
+                    return caches.delete(cache_name);
+                }
+            }));
+        })
+    );
+});
+
 self.addEventListener("fetch", function (evt) {
     "use strict";
 
     evt.respondWith(
-        caches.match(evt.request).then(function (response) {
-            return response || fetch(evt.request);
+        caches.match(evt.request).then(function (cached_resp) {
+            return cached_resp || fetch(evt.request).then(function (resp) {
+                return caches.open(CACHE_NAME).then(function (cache) {
+                    cache.put(evt.request, resp.clone());
+                    return resp;
+                });
+            });
         })
     );
 });

@@ -27,11 +27,13 @@
     <script src="./js/constr-physical_point.js"></script>
     <script src="./js/constr-tile.js"></script>
     <script src="./js/constr-background.js"></script>
+    <script src="./js/constr-boss.js"></script>
     <script src="./js/constr-enemy.js"></script>
     <script src="./js/constr-enemy_shot.js"></script>
     <script src="./js/constr-player.js"></script>
     <script src="./js/constr-player_item.js"></script>
     <script src="./js/constr-player_shot.js"></script>
+    <script src="./js/boss_manager.js"></script>
     <script src="./js/enemy_manager.js"></script>
     <script src="./js/enemy_shot_manager.js"></script>
     <script src="./js/player_manager.js"></script>
@@ -40,7 +42,7 @@
     <script src="./js/game.js"></script>
     <script>
     /*jslint bitwise, browser, multivar, this*/
-    /*global EAD, Image, caches, fetch, self, window*/
+    /*global EAD, Image, Promise, caches, fetch, self, window*/
     if (navigator.serviceWorker) {
         window.addEventListener("load", function () {
             "use strict";

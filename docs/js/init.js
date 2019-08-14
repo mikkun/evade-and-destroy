@@ -7,10 +7,11 @@
  */
 
 /*jslint bitwise, browser, multivar, this*/
-/*global EAD, Image, caches, fetch, self, window*/
+/*global EAD, Image, Promise, caches, fetch, self, window*/
 
 var EAD = {};
 
+EAD.VERSION = "v3.0.0";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
 EAD.HEIGHT = 480;
@@ -21,6 +22,7 @@ EAD.BG_COLOR = "rgb(0, 0, 0)";
 EAD.FONT_COLOR = "rgb(255, 255, 255)";
 EAD.FONT_FACE = "bold 12px monospace";
 EAD.MAX_DIFFICULTY = 320000;
+EAD.MAX_HIT = 150;
 EAD.MAX_SCORE = 100000000;
 
 EAD.canvas = {};
@@ -63,9 +65,12 @@ EAD.area_order = (function () {
     return area_order;
 }());
 EAD.difficulty = 0;
+EAD.hit = 0;
 EAD.high_score = 0;
 EAD.score = 0;
 
+EAD.mothership = new Image();
+EAD.mothership.src = "./img/mothership.png";
 EAD.sprites = new Image();
 EAD.sprites.src = "./img/sprites.png";
 EAD.tileset = new Image();
