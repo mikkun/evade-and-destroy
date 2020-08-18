@@ -3,7 +3,7 @@
  * Purpose : Managing the instances of EnemyShot
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/

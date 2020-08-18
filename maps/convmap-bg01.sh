@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/starfield.tmx" to "map-bg01.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT License
+# License : MIT License
 
 # Usage : ./convmap-bg01.sh
 
@@ -50,7 +50,7 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of starfield (bg01)
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
 /*jslint bitwise, browser, multivar, this*/
