@@ -10,7 +10,7 @@
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
-var CACHE_NAME = "EAD-cache-v3.0.0",
+var CACHE_NAME = "EAD-cache-v3.0.1",
     CACHED_URLS = [
         "./",
         "./css/styles.css",

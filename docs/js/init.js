@@ -12,7 +12,7 @@
 
 var EAD = {};
 
-EAD.VERSION = "v3.0.0";
+EAD.VERSION = "v3.0.1";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
 EAD.HEIGHT = 480;
