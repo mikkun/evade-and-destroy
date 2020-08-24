@@ -30,6 +30,7 @@ EAD.Boss = function () {
 
 EAD.Boss.BASE_PX = EAD.BASE_PX * 2;
 EAD.Boss.INITIAL_LIVES = 128;
+EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);
 EAD.Boss.TIME_LIMIT = 1600;
 
 EAD.Boss.prototype.COLLISION_RADIUS = 22;
@@ -97,7 +98,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
             : this.lives - this.damage;
         this.damage = 0;
         if (this.lives <= 0) {
-            EAD.score = EAD.difficulty > EAD.MAX_DIFFICULTY / 2
+            EAD.score = EAD.difficulty > EAD.DIFFICULTY_HARD
                 ? EAD.score + this.pts * 2
                 : EAD.score + this.pts;
             EAD.score = EAD.score > EAD.MAX_SCORE
@@ -164,7 +165,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     this.x += this.vx;
     this.y += this.vy;
     this.time += 1;
-    if (this.lives < EAD.Boss.INITIAL_LIVES / 2) {
+    if (this.lives < EAD.Boss.LIVES_LOW) {
         if (this.vx === 0 && this.vy === 0) {
             if (this.time % 5 === 0) {
                 this.state = this.STATE.ATTACK;

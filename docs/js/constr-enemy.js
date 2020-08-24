@@ -115,11 +115,11 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
     switch (this.state) {
     case this.STATE.INIT:
         if (this.name === this.NAME.ANY_SHIP) {
-            this.name = EAD.difficulty > EAD.MAX_DIFFICULTY / 4
+            this.name = EAD.difficulty > EAD.DIFFICULTY_MEDIUM
                 ? this.name + 20
                 : this.name + 10;
         } else if (this.name === this.NAME.RANDOM) {
-            this.name = EAD.difficulty > EAD.MAX_DIFFICULTY / 2
+            this.name = EAD.difficulty > EAD.DIFFICULTY_HARD
                 ? this.name - (Math.floor(Math.random() * 4) + 1) * 10
                 : 10;
         }
@@ -205,7 +205,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         if (this.sprite_air_x === 5) {
             this.sprite_air_x = 0;
             this.state = (
-                EAD.difficulty === EAD.MAX_DIFFICULTY &&
+                EAD.difficulty > EAD.DIFFICULTY_HARDEST &&
                 !this.on_ground &&
                 this.has_weapon &&
                 player_y - this.y > EAD.BASE_PX * 3

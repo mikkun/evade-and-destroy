@@ -283,11 +283,11 @@ EAD.loop = function () {
             EAD.boss.state === EAD.boss.STATE.ATTACK ||
             EAD.boss.state === EAD.boss.STATE.DESTROYED ||
             (
-                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.difficulty > EAD.DIFFICULTY_HARD &&
                 EAD.boss.state === EAD.boss.STATE.DAMAGED
             ) ||
             (
-                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.difficulty > EAD.DIFFICULTY_HARD &&
                 EAD.boss.state === EAD.boss.STATE.EXPLODING
             )
         ) {
