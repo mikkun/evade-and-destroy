@@ -23,6 +23,7 @@ EAD.Boss = function () {
     this.lives = 0;
     this.time = 0;
     this.pts = 20000;
+    this.frame_count = 0;
     this.sprite_x = 0;
     this.sprite_y = 0;
     this.state = this.STATE.GARBAGE;
@@ -32,6 +33,7 @@ EAD.Boss.BASE_PX = EAD.BASE_PX * 2;
 EAD.Boss.INITIAL_LIVES = 128;
 EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);
 EAD.Boss.TIME_LIMIT = 1600;
+EAD.Boss.MAX_FRAME_COUNT = 2;
 
 EAD.Boss.prototype.COLLISION_RADIUS = 22;
 EAD.Boss.prototype.STATE = {
@@ -106,6 +108,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
                 : EAD.score;
             this.x += Math.floor(this.vx / 2);
             this.y += Math.floor(this.vy / 2);
+            this.frame_count = 0;
             this.sprite_x = 1;
             this.sprite_y = 0;
             this.state = this.STATE.EXPLODING;
@@ -117,6 +120,11 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
         break;
 
     case this.STATE.EXPLODING:
+        this.frame_count += 1;
+        if (this.frame_count < EAD.Boss.MAX_FRAME_COUNT) {
+            return;
+        }
+        this.frame_count = 0;
         if (this.sprite_y === 0 && this.sprite_x === 3) {
             this.sprite_x = 0;
             this.sprite_y = 1;
