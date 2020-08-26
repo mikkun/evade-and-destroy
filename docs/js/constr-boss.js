@@ -19,6 +19,7 @@ EAD.Boss = function () {
     this.vx = 0;
     this.vy = 0;
     this.is_damaged = false;
+    this.time_limit_exceeded = false;
     this.damage = 0;
     this.lives = 0;
     this.time = 0;
@@ -67,6 +68,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
         this.y = -EAD.BASE_PX;
         this.vx = 0;
         this.vy = 4;
+        this.time_limit_exceeded = false;
         this.lives = EAD.Boss.INITIAL_LIVES;
         this.time = 0;
         this.sprite_x = 4;
@@ -108,6 +110,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
                 : EAD.score;
             this.x += Math.floor(this.vx / 2);
             this.y += Math.floor(this.vy / 2);
+            this.time_limit_exceeded = false;
             this.frame_count = 0;
             this.sprite_x = 1;
             this.sprite_y = 0;
@@ -144,6 +147,13 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     default:
         this.x = -EAD.BASE_PX;
         this.y = -EAD.BASE_PX;
+        if (this.time_limit_exceeded) {
+            EAD.difficulty += Math.floor(EAD.difficulty * 0.1);
+            EAD.difficulty = EAD.difficulty > EAD.MAX_DIFFICULTY
+                ? EAD.MAX_DIFFICULTY
+                : EAD.difficulty;
+            this.time_limit_exceeded = false;
+        }
         this.state = this.STATE.GARBAGE;
         return;
     }
@@ -169,6 +179,9 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     } else {
         this.vx = 0;
         this.vy -= 1;
+        if (!this.time_limit_exceeded) {
+            this.time_limit_exceeded = true;
+        }
     }
     this.x += this.vx;
     this.y += this.vy;
