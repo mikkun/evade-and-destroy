@@ -312,7 +312,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -350,7 +350,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -388,7 +388,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -495,7 +495,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         if (this.state === this.STATE.INIT) {
             this.vx = 0;
             this.vy = 5;
-            this.has_weapon = false;
+            this.has_weapon = !!(EAD.difficulty === EAD.MAX_DIFFICULTY);
             this.on_ground = false;
             this.lives = 1;
             this.pts = 500;
@@ -523,7 +523,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
             );
             this.vx = velocity.vx;
             this.vy = velocity.vy;
-            this.has_weapon = false;
+            this.has_weapon = !!(EAD.difficulty === EAD.MAX_DIFFICULTY);
             this.on_ground = false;
             this.lives = 1;
             this.pts = 500;
