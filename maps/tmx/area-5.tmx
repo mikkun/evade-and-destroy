@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="60" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="10" height="60" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32" tilecount="30" columns="10">
   <image source="../../docs/img/tileset.png" width="320" height="96"/>
  </tileset>
- <tileset firstgid="31" name="sprites" tilewidth="32" tileheight="32">
+ <tileset firstgid="31" name="sprites" tilewidth="32" tileheight="32" tilecount="60" columns="10">
   <image source="../../docs/img/sprites.png" width="320" height="192"/>
  </tileset>
- <layer name="bg02" width="10" height="60">
+ <layer id="1" name="bg02" width="10" height="60">
   <data encoding="csv">
 11,11,12,21,13,12,21,13,11,11,
 11,11,25,16,27,25,16,27,11,11,
@@ -70,7 +70,7 @@
 11,11,11,11,11,11,11,11,11,11
 </data>
  </layer>
- <layer name="enemies" width="10" height="60">
+ <layer id="2" name="enemies" width="10" height="60">
   <data encoding="csv">
 61,85,61,62,61,87,85,87,62,61,
 89,61,89,61,61,61,61,61,61,89,
