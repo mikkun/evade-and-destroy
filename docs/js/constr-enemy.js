@@ -3,9 +3,10 @@
  * Purpose : Constructor for Enemy objects
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
@@ -114,11 +115,11 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
     switch (this.state) {
     case this.STATE.INIT:
         if (this.name === this.NAME.ANY_SHIP) {
-            this.name = EAD.difficulty > EAD.MAX_DIFFICULTY / 4
+            this.name = EAD.difficulty > EAD.DIFFICULTY_MEDIUM
                 ? this.name + 20
                 : this.name + 10;
         } else if (this.name === this.NAME.RANDOM) {
-            this.name = EAD.difficulty > EAD.MAX_DIFFICULTY / 2
+            this.name = EAD.difficulty > EAD.DIFFICULTY_HARD
                 ? this.name - (Math.floor(Math.random() * 4) + 1) * 10
                 : 10;
         }
@@ -204,7 +205,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         if (this.sprite_air_x === 5) {
             this.sprite_air_x = 0;
             this.state = (
-                EAD.difficulty === EAD.MAX_DIFFICULTY &&
+                EAD.difficulty > EAD.DIFFICULTY_HARDEST &&
                 !this.on_ground &&
                 this.has_weapon &&
                 player_y - this.y > EAD.BASE_PX * 3
@@ -311,7 +312,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -349,7 +350,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -387,7 +388,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         } else {
             this.x += this.vx;
             this.y += this.vy;
-            attackRandomly(EAD.Enemy.RANDOM_RANGE);
+            attackRandomly(EAD.Enemy.RANDOM_RANGE / 2);
         }
         break;
 
@@ -494,7 +495,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
         if (this.state === this.STATE.INIT) {
             this.vx = 0;
             this.vy = 5;
-            this.has_weapon = false;
+            this.has_weapon = !!(EAD.difficulty === EAD.MAX_DIFFICULTY);
             this.on_ground = false;
             this.lives = 1;
             this.pts = 500;
@@ -522,7 +523,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
             );
             this.vx = velocity.vx;
             this.vy = velocity.vy;
-            this.has_weapon = false;
+            this.has_weapon = !!(EAD.difficulty === EAD.MAX_DIFFICULTY);
             this.on_ground = false;
             this.lives = 1;
             this.pts = 500;

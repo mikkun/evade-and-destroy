@@ -3,15 +3,16 @@
  * Purpose : Initializing the game environment
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
 var EAD = {};
 
-EAD.VERSION = "v3.0.0";
+EAD.VERSION = "v3.0.1";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
 EAD.HEIGHT = 480;
@@ -24,6 +25,9 @@ EAD.FONT_FACE = "bold 12px monospace";
 EAD.MAX_DIFFICULTY = 320000;
 EAD.MAX_HIT = 150;
 EAD.MAX_SCORE = 100000000;
+EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);
+EAD.DIFFICULTY_HARD = Math.floor(EAD.MAX_DIFFICULTY * 0.6);
+EAD.DIFFICULTY_HARDEST = Math.floor(EAD.MAX_DIFFICULTY * 0.9);
 
 EAD.canvas = {};
 EAD.ctx = {};

@@ -3,9 +3,10 @@
  * Purpose : Main game routine
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
@@ -282,11 +283,11 @@ EAD.loop = function () {
             EAD.boss.state === EAD.boss.STATE.ATTACK ||
             EAD.boss.state === EAD.boss.STATE.DESTROYED ||
             (
-                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.difficulty > EAD.DIFFICULTY_HARD &&
                 EAD.boss.state === EAD.boss.STATE.DAMAGED
             ) ||
             (
-                EAD.difficulty > EAD.MAX_DIFFICULTY / 2 &&
+                EAD.difficulty > EAD.DIFFICULTY_HARD &&
                 EAD.boss.state === EAD.boss.STATE.EXPLODING
             )
         ) {

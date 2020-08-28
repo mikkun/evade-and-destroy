@@ -3,9 +3,10 @@
  * Purpose : Constructor for PlayerShot objects
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 

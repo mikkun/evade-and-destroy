@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/area-{0..7}.tmx" to "map-bg02.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT License
+# License : MIT License
 
 # Usage : ./convmap-bg02.sh
 
@@ -52,9 +52,10 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of the enemy space station (bg02)
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
@@ -67,7 +68,7 @@ for i in {0..7} ; do
 
     echo "EAD.bg02_maps[$i] = [" >> "$output_file"
 
-    sed '/layer name="bg02"/,+61!d' "$input_file"           |
+    sed '/layer \?.* name="bg02"/,+61!d' "$input_file"      |
     tail -n +3                                              |
     tr ',' ' '                                              |
     awk '{for(i=1;i<=NF;i++){printf $i-1", "};printf "\n"}' |

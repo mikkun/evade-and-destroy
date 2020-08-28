@@ -3,13 +3,14 @@
  * Purpose : Caching and serving assets
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
-var CACHE_NAME = "EAD-cache-v3.0.0",
+var CACHE_NAME = "EAD-cache-v3.0.1",
     CACHED_URLS = [
         "./",
         "./css/styles.css",

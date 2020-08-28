@@ -3,9 +3,10 @@
  * Purpose : Constructor for Boss objects
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
@@ -18,10 +19,12 @@ EAD.Boss = function () {
     this.vx = 0;
     this.vy = 0;
     this.is_damaged = false;
+    this.time_limit_exceeded = false;
     this.damage = 0;
     this.lives = 0;
     this.time = 0;
     this.pts = 20000;
+    this.frame_count = 0;
     this.sprite_x = 0;
     this.sprite_y = 0;
     this.state = this.STATE.GARBAGE;
@@ -29,7 +32,9 @@ EAD.Boss = function () {
 
 EAD.Boss.BASE_PX = EAD.BASE_PX * 2;
 EAD.Boss.INITIAL_LIVES = 128;
+EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);
 EAD.Boss.TIME_LIMIT = 1600;
+EAD.Boss.MAX_FRAME_COUNT = 2;
 
 EAD.Boss.prototype.COLLISION_RADIUS = 22;
 EAD.Boss.prototype.STATE = {
@@ -63,6 +68,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
         this.y = -EAD.BASE_PX;
         this.vx = 0;
         this.vy = 4;
+        this.time_limit_exceeded = false;
         this.lives = EAD.Boss.INITIAL_LIVES;
         this.time = 0;
         this.sprite_x = 4;
@@ -96,7 +102,7 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
             : this.lives - this.damage;
         this.damage = 0;
         if (this.lives <= 0) {
-            EAD.score = EAD.difficulty > EAD.MAX_DIFFICULTY / 2
+            EAD.score = EAD.difficulty > EAD.DIFFICULTY_HARD
                 ? EAD.score + this.pts * 2
                 : EAD.score + this.pts;
             EAD.score = EAD.score > EAD.MAX_SCORE
@@ -104,6 +110,8 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
                 : EAD.score;
             this.x += Math.floor(this.vx / 2);
             this.y += Math.floor(this.vy / 2);
+            this.time_limit_exceeded = false;
+            this.frame_count = 0;
             this.sprite_x = 1;
             this.sprite_y = 0;
             this.state = this.STATE.EXPLODING;
@@ -115,6 +123,11 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
         break;
 
     case this.STATE.EXPLODING:
+        this.frame_count += 1;
+        if (this.frame_count < EAD.Boss.MAX_FRAME_COUNT) {
+            return;
+        }
+        this.frame_count = 0;
         if (this.sprite_y === 0 && this.sprite_x === 3) {
             this.sprite_x = 0;
             this.sprite_y = 1;
@@ -134,6 +147,13 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     default:
         this.x = -EAD.BASE_PX;
         this.y = -EAD.BASE_PX;
+        if (this.time_limit_exceeded) {
+            EAD.difficulty += Math.floor(EAD.difficulty * 0.1);
+            EAD.difficulty = EAD.difficulty > EAD.MAX_DIFFICULTY
+                ? EAD.MAX_DIFFICULTY
+                : EAD.difficulty;
+            this.time_limit_exceeded = false;
+        }
         this.state = this.STATE.GARBAGE;
         return;
     }
@@ -159,11 +179,14 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     } else {
         this.vx = 0;
         this.vy -= 1;
+        if (!this.time_limit_exceeded) {
+            this.time_limit_exceeded = true;
+        }
     }
     this.x += this.vx;
     this.y += this.vy;
     this.time += 1;
-    if (this.lives < EAD.Boss.INITIAL_LIVES / 2) {
+    if (this.lives < EAD.Boss.LIVES_LOW) {
         if (this.vx === 0 && this.vy === 0) {
             if (this.time % 5 === 0) {
                 this.state = this.STATE.ATTACK;

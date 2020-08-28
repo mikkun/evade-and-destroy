@@ -4,7 +4,7 @@
 # Purpose : Convert "tmx/starfield.tmx" to "map-bg01.js"
 #
 # Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
-# Licence : MIT License
+# License : MIT License
 
 # Usage : ./convmap-bg01.sh
 
@@ -50,16 +50,17 @@ cat << END_CODE > "$output_file"
  * Purpose : Map of starfield (bg01)
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
 EAD.bg01_map = [
 END_CODE
 
-sed '/layer name="bg01"/,+31!d' "$input_file"           |
+sed '/layer \?.* name="bg01"/,+31!d' "$input_file"      |
 tail -n +3                                              |
 tr ',' ' '                                              |
 awk '{for(i=1;i<=NF;i++){printf $i-1", "};printf "\n"}' |

@@ -3,9 +3,10 @@
  * Purpose : Constructor for EnemyShot objects
  *
  * Author  : KUSANAGI Mitsuhisa <mikkun@mbg.nifty.com>
- * Licence : MIT License
+ * License : MIT License
  */
 
+// Continue to use JSLint edition 2017-07-01
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
@@ -74,10 +75,10 @@ EAD.EnemyShot.prototype.update = function (player_x, player_y) {
         speed = this.name === this.NAME.FROM_BASE
             ? 4
             : 6;
-        if (EAD.difficulty > EAD.MAX_DIFFICULTY / 2) {
+        if (EAD.difficulty > EAD.DIFFICULTY_HARD) {
             speed += 1;
         }
-        if (EAD.difficulty === EAD.MAX_DIFFICULTY) {
+        if (EAD.difficulty > EAD.DIFFICULTY_HARDEST) {
             speed += 1;
         }
         velocity = EAD.util.calcVelocity(
