@@ -68,7 +68,7 @@ for i in {0..7} ; do
 
     echo "EAD.bg02_maps[$i] = [" >> "$output_file"
 
-    sed '/layer name="bg02"/,+61!d' "$input_file"           |
+    sed '/layer \?.* name="bg02"/,+61!d' "$input_file"      |
     tail -n +3                                              |
     tr ',' ' '                                              |
     awk '{for(i=1;i<=NF;i++){printf $i-1", "};printf "\n"}' |

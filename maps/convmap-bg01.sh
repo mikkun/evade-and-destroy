@@ -60,7 +60,7 @@ cat << END_CODE > "$output_file"
 EAD.bg01_map = [
 END_CODE
 
-sed '/layer name="bg01"/,+31!d' "$input_file"           |
+sed '/layer \?.* name="bg01"/,+31!d' "$input_file"      |
 tail -n +3                                              |
 tr ',' ' '                                              |
 awk '{for(i=1;i<=NF;i++){printf $i-1", "};printf "\n"}' |
