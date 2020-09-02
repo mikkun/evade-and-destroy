@@ -23,14 +23,16 @@ Browser Support
 **EVADE AND DESTROY** has been tested in the following browsers:
 
 * Desktop
-    * Chromium 73.0.3683.75: Very fast
-    * Firefox ESR 60.8.0: Very fast
-    * Firefox Beta 69.0beta: Very fast
-    * Internet Explorer 11: Very fast
-    * Vivaldi 2.6.1566.49: Very fast
+    * Chromium 83.0.4103.116 (32-bit): Fast
+    * Firefox ESR 68.12.0 (32-bit): Very fast
+    * Firefox Release 79.0 (64-bit): Very fast
+    * Internet Explorer 11 (64-bit): Very fast
+    * Microsoft Edge 85.0.564.41 (64-bit): Very fast
+    * Vivaldi 3.2.1967.47 (32-bit): Fast
 * Mobile
-    * Chrome for Android 75.0.3770.143: Very fast
-    * Firefox for Android 68.0: Very fast
+    * Chrome for Android 85.0.4183.81: Very fast
+    * Firefox for Android 79.0.5: Very fast
+    * Microsoft Edge for Android 45.07.4.5057: Very fast
 
 How to Play
 -----------
