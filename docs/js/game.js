@@ -104,16 +104,16 @@ EAD.loop = function () {
         EAD.boss_manager.setup();
         EAD.player_manager.update();
         EAD.game.state = EAD.game.STATE.TITLE;
-        EAD.ctx.front.fillText("  === LOADING DATA ===", EAD.WIDTH / 2, 12);
+        EAD.ctx.front.fillText(" === LOADING DATA ===", EAD.WIDTH / 2, 12);
         if (EAD.game.storage_error) {
             EAD.ctx.front.fillText(
-                "  *** LOAD  FAILED ***",
+                " *** LOAD  FAILED ***",
                 EAD.WIDTH / 2,
                 24
             );
         } else {
             EAD.ctx.front.fillText(
-                "  -- LOAD COMPLETED --",
+                " -- LOAD COMPLETED --",
                 EAD.WIDTH / 2,
                 24
             );
@@ -127,8 +127,8 @@ EAD.loop = function () {
         if (EAD.tapped) {
             EAD.game.state = EAD.game.STATE.START;
         }
-        EAD.ctx.front.fillText("  ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
-        EAD.ctx.front.fillText("  --- TAP TO START ---", EAD.WIDTH / 2, 24);
+        EAD.ctx.front.fillText(" ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
+        EAD.ctx.front.fillText(" --- TAP TO START ---", EAD.WIDTH / 2, 24);
         EAD.ctx.front.fillText(EAD.VERSION, 2, EAD.HEIGHT - EAD.BASE_PX - 3);
         EAD.ctx.front.drawImage(
             EAD.sprites,
@@ -159,8 +159,8 @@ EAD.loop = function () {
         EAD.boss_manager.setup();
         EAD.player.state = EAD.player.STATE.STANDBY;
         EAD.game.state = EAD.game.STATE.PLAYING;
-        EAD.ctx.front.fillText("  == STARTING  GAME ==", EAD.WIDTH / 2, 12);
-        EAD.ctx.front.fillText("  --- PLEASE  WAIT ---", EAD.WIDTH / 2, 24);
+        EAD.ctx.front.fillText(" == STARTING  GAME ==", EAD.WIDTH / 2, 12);
+        EAD.ctx.front.fillText(" --- PLEASE  WAIT ---", EAD.WIDTH / 2, 24);
         break;
 
     case EAD.game.STATE.PLAYING:
@@ -354,12 +354,12 @@ EAD.loop = function () {
             EAD.game.state = EAD.game.STATE.SAVING;
         }
         EAD.ctx.front.fillText(
-            "   PLASMA CANNON   " + energy_red,
+            "   PLASMA CANNON  " + energy_red,
             EAD.WIDTH / 2,
             12
         );
         EAD.ctx.front.fillText(
-            "   INVINCIBLE      " + energy_green,
+            "   INVINCIBLE     " + energy_green,
             EAD.WIDTH / 2,
             24
         );
@@ -377,16 +377,16 @@ EAD.loop = function () {
         } catch (e) {
             EAD.game.storage_error = e.name;
         }
-        EAD.ctx.front.fillText("  === SAVING  DATA ===", EAD.WIDTH / 2, 12);
+        EAD.ctx.front.fillText(" === SAVING  DATA ===", EAD.WIDTH / 2, 12);
         if (EAD.game.storage_error) {
             EAD.ctx.front.fillText(
-                "  *** SAVE  FAILED ***",
+                " *** SAVE  FAILED ***",
                 EAD.WIDTH / 2,
                 24
             );
         } else {
             EAD.ctx.front.fillText(
-                "  -- SAVE COMPLETED --",
+                " -- SAVE COMPLETED --",
                 EAD.WIDTH / 2,
                 24
             );
@@ -421,12 +421,12 @@ EAD.loop = function () {
         EAD.enemy_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         EAD.boss_manager.update(EAD.WIDTH / 2, EAD.HEIGHT);
         EAD.game.state = EAD.game.STATE.GAMEOVER;
-        EAD.ctx.front.fillText("  ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
-        EAD.ctx.front.fillText("  -- BUTTON  LOCKED --", EAD.WIDTH / 2, 24);
+        EAD.ctx.front.fillText(" ==== GAME  OVER ====", EAD.WIDTH / 2, 12);
+        EAD.ctx.front.fillText(" -- BUTTON  LOCKED --", EAD.WIDTH / 2, 24);
     }
 
-    EAD.ctx.front.fillText("HIGH SCORE   " + high_score, 2, 12);
-    EAD.ctx.front.fillText("SCORE        " + score, 2, 24);
+    EAD.ctx.front.fillText("HIGH SCORE  " + high_score, 2, 12);
+    EAD.ctx.front.fillText("SCORE       " + score, 2, 24);
 
     EAD.bg01.scroll();
     EAD.bg02.scroll();
